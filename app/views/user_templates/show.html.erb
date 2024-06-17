@@ -13,7 +13,7 @@
       <label for="username_id">
         Username
       </label>
-      <input type="text" id="username_id" name="username">
+      <input type="text" id="username_id" name="username" value="<%=@the_user.username%>">
       <button>Update user</button>
     </form>
   </dd>
@@ -38,7 +38,7 @@
       <td><%=a_photo.poster.username%></td>
       <td><%=a_photo.caption%></td>
       <td><%=a_photo.created_at%></td>
-      <td>Show details</td>
+      <td><a href="/photos/<%=a_photo.id%>">Show details</a></td>
     </tr>
   <%end%>
 </table>
