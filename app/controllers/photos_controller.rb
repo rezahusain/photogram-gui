@@ -39,7 +39,7 @@ class PhotosController < ApplicationController
     @the_photo.caption = caption_value
     @the_photo.owner_id = owner_value
     @the_photo.save
-    redirect_to("/photos")
+    redirect_to("/photos/#{@the_photo.id}")
   end
 
   def update
@@ -50,5 +50,17 @@ class PhotosController < ApplicationController
     @current_photo.caption = caption_value
     @current_photo.save
     redirect_to("/photos/#{@current_photo.id}")
+  end
+
+  def comment
+    @the_comment = Comment.new
+    photo_value = params.fetch("photo")
+    author_value = params.fetch("author")
+    comment_value = params.fetch("comment")
+    @the_comment.photo_id = photo_value
+    @the_comment.author_id = author_value
+    @the_comment.body = comment_value
+    @the_comment.save
+    redirect_to("/photos/#{@the_comment.photo_id}")
   end
 end
